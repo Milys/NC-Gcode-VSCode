@@ -10,9 +10,7 @@ G-Code is also use in 3D printing.
 
 This VSCode Extension is syntax higlighter for NC G-Code.
 
-\!\[feature X\]\(images/feature-x.png\)
-
-
+<img width="921" alt="screenshot" src="https://user-images.githubusercontent.com/11251737/35319472-d6260160-0094-11e8-8ce6-082f51e793e8.png">
 
 ## Requirements
 
