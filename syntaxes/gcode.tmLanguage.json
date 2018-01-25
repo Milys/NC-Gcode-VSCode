@@ -15,11 +15,11 @@
 			"patterns": [
 				{
 				"name": "constant.gcode",
-				"match": "[nN][ \\t]*[0-9\\.]+"	
+				"match": "[nN][ \\t]*[0-9\\.]+"
 				},
 				{
-					"name": "support.function.rzcode.gcode",
-					"match": "[gG][ \\t]*[0-9][0-9\\.]*"	
+					"name": "keyword.control.gcode.gcode",
+					"match": "[gG][ \\t]*[0-9][0-9\\.]*"
 				},
 				{
 					"name": "keyword.string.gcode",
@@ -34,7 +34,7 @@
 					"match": "(?i)[YBVJ][ \\t]*[\\-\\+]?[0-9\\.]+"
 				},
 				{
-					"name": "keyword.control.mcode.gcode",
+					"name": "support.function.mcode.gcode",
 					"match": "[mM][ \\t]*[0-9][0-9\\.]*"
 				},
 				{
@@ -43,11 +43,11 @@
 				},
 				{
 					"name": "variable.parameter.pqecode.gcode",
-					"match": "[pPqQeE]"
+					"match": "[pPqQeE][ \\t]*[0-9][0-9\\.]*"
 				},
 				{
 					"name": "string.control.mcode.gcode",
-					"match": "[cCwWkK][ \\t]*[\\-\\+]?[0-9\\.]+"
+					"match": "[cCwWkKlL][ \\t]*[\\-\\+]?[0-9\\.]+"
 				}
 		   ]
 		},

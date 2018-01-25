@@ -2,7 +2,7 @@
     "name": "nc-gcode",
     "displayName": "nc-gcode",
     "description": "Gcode syntax highlighter",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "ML",
     "engines": {
         "vscode": "^1.19.0"
@@ -16,21 +16,55 @@
         "theme": "dark"
     },
     "contributes": {
-        "languages": [{
-            "id": "gcode",
-            "aliases": ["NC-Gcode", "gcode"],
-            "extensions": [".ptp",".nc", ".gcode", ".ncf", ".cnc",
-                ".eia", ".maz", ".tap", ".fnc", ".dnc", ".ncg", ".gc",
-                ".fan" ,".fgc", ".din", ".hnc", ".ncp", ".gcd", ".mpf",
-                ".ngc", ".cnc", ".pim", ".plt", ".ncc", ".spf", ".ncc",
-                ".ncd", ".mpt", ".sbc"
-                        ],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "gcode",
-            "scopeName": "source.gcode",
-            "path": "./syntaxes/gcode.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "gcode",
+                "aliases": [
+                    "NC-Gcode",
+                    "gcode",
+                    "syntax",
+                    "highlighter"
+                ],
+                "extensions": [
+                    ".ptp",
+                    ".nc",
+                    ".gcode",
+                    ".ncf",
+                    ".cnc",
+                    ".eia",
+                    ".maz",
+                    ".tap",
+                    ".fnc",
+                    ".dnc",
+                    ".ncg",
+                    ".gc",
+                    ".fan",
+                    ".fgc",
+                    ".din",
+                    ".hnc",
+                    ".ncp",
+                    ".gcd",
+                    ".mpf",
+                    ".ngc",
+                    ".cnc",
+                    ".pim",
+                    ".plt",
+                    ".ncc",
+                    ".spf",
+                    ".ncc",
+                    ".ncd",
+                    ".mpt",
+                    ".sbc"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "gcode",
+                "scopeName": "source.gcode",
+                "path": "./syntaxes/gcode.tmLanguage.json"
+            }
+        ]
     }
 }
