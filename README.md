@@ -10,7 +10,7 @@ G-Code is also use in 3D printing.
 
 This VSCode Extension is syntax highlighter for NC G-Code.
 
-<img width="921" alt="screenshot" src="https://user-images.githubusercontent.com/11251737/35319472-d6260160-0094-11e8-8ce6-082f51e793e8.png">
+<img width="825" alt="screen_shot" src="https://user-images.githubusercontent.com/11251737/35370982-1e0a4e62-0146-11e8-8534-545ad78ae7b5.png">
 
 ## Requirements
 
