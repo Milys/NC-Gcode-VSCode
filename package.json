@@ -2,7 +2,7 @@
     "name": "nc-gcode",
     "displayName": "nc-gcode",
     "description": "Gcode syntax highlighter",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "ML",
     "engines": {
         "vscode": "^1.19.0"
@@ -54,7 +54,14 @@
                     ".ncc",
                     ".ncd",
                     ".mpt",
-                    ".sbc"
+                    ".sbc",
+                    ".h",
+                    ".MIN",
+                    ".knc",
+                    ".g00",
+                    ".t",
+                    ".dmp",
+                    ".ppg"
                 ],
                 "configuration": "./language-configuration.json"
             }
