@@ -53,8 +53,8 @@
 		},
 		"strings": {
 			"name": "comment.gcode",
-			"begin": "\\(",
-			"end": "\\)",
+			"begin": "(\\()|(\\;)",
+			"end": "(\\))|(\n)",
 			"patterns": [
 				{
 					"name": "constant.character.escape.gcode",
