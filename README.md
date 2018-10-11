@@ -29,7 +29,9 @@ No requirements or dependencies.
 
 ### 1.0.0
 
-Initial release of ...
+1. Initial release
+2. Updated to include ";" gcode comment style.
+3. Add link to GitHub Repository in VSCode extension.
 
 
 
