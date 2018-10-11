@@ -2,14 +2,14 @@
     "name": "nc-gcode",
     "displayName": "nc-gcode",
     "description": "Gcode syntax highlighter",
-    "version": "0.3.0",
+    "version": "0.6.0",
     "publisher": "ML",
     "engines": {
         "vscode": "^1.19.0"
     },
     "repository": {
-    "type": "git",
-    "url": "https://github.com/Milys/NC-Gcode-VSCode.git"
+        "type": "git",
+        "url": "https://github.com/Milys/NC-Gcode-VSCode.git"
     },
     "categories": [
         "Languages"
