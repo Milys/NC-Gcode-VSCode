@@ -65,7 +65,9 @@
                     ".g00",
                     ".t",
                     ".dmp",
-                    ".ppg"
+                    ".ppg",
+                    ".pit",
+                    ".pim"
                 ],
                 "configuration": "./language-configuration.json"
             }
