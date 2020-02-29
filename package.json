@@ -20,64 +20,60 @@
         "theme": "dark"
     },
     "contributes": {
-        "languages": [
-            {
-                "id": "gcode",
-                "aliases": [
-                    "NC-Gcode",
-                    "gcode",
-                    "syntax",
-                    "highlighter"
-                ],
-                "extensions": [
-                    ".ptp",
-                    ".nc",
-                    ".gcode",
-                    ".ncf",
-                    ".cnc",
-                    ".eia",
-                    ".maz",
-                    ".tap",
-                    ".fnc",
-                    ".dnc",
-                    ".ncg",
-                    ".gc",
-                    ".fan",
-                    ".fgc",
-                    ".din",
-                    ".hnc",
-                    ".ncp",
-                    ".gcd",
-                    ".mpf",
-                    ".ngc",
-                    ".cnc",
-                    ".pim",
-                    ".plt",
-                    ".ncc",
-                    ".spf",
-                    ".ncc",
-                    ".ncd",
-                    ".mpt",
-                    ".sbc",
-                    ".h",
-                    ".MIN",
-                    ".knc",
-                    ".g00",
-                    ".t",
-                    ".dmp",
-                    ".ppg",
-                    ".pit",
-                    ".pim"
-                ],
-                "configuration": "./language-configuration.json"
-            }
-        ],
-        "grammars": [
-            {
-                "language": "gcode",
-                "scopeName": "source.gcode",
-                "path": "./syntaxes/gcode.tmLanguage.json"
-            }
-        ]
+        "languages": [{
+            "id": "gcode",
+            "aliases": [
+                "NC-Gcode",
+                "gcode",
+                "syntax",
+                "highlighter"
+            ],
+            "extensions": [
+                ".ptp",
+                ".nc",
+                ".gcode",
+                ".ncf",
+                ".cnc",
+                ".eia",
+                ".maz",
+                ".tap",
+                ".fnc",
+                ".dnc",
+                ".ncg",
+                ".gc",
+                ".fan",
+                ".fgc",
+                ".din",
+                ".hnc",
+                ".ncp",
+                ".gcd",
+                ".mpf",
+                ".ngc",
+                ".cnc",
+                ".pim",
+                ".plt",
+                ".ncc",
+                ".spf",
+                ".ncc",
+                ".ncd",
+                ".mpt",
+                ".sbc",
+                ".h",
+                ".MIN",
+                ".knc",
+                ".g00",
+                ".t",
+                ".dmp",
+                ".ppg",
+                ".pit",
+                ".pim"
+            ],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "gcode",
+            "scopeName": "source.gcode",
+            "path": "./syntaxes/gcode.tmLanguage.json"
+        }]
     }
 }
