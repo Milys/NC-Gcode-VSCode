@@ -16,8 +16,8 @@
     ],
     "icon": "images/G.png",
     "galleryBanner": {
-        "color": "#C80000",
-        "theme": "dark"
+        "color": "#E4F2FF",
+        "theme": "light"
     },
     "contributes": {
         "languages": [
