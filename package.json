@@ -12,8 +12,9 @@
         "url": "https://github.com/Milys/NC-Gcode-VSCode.git"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
+    "keywords": ["cnc", "g-code", "gcode", "nc"],
     "icon": "images/G.png",
     "galleryBanner": {
         "color": "#E4F2FF",
