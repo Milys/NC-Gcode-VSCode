@@ -52,7 +52,8 @@
 		   ]
 		},
 		"strings": {
-			"name": "comment.gcode",
+			"name": "keyword.operator.gcode",
+			"comment": "This pattern is actually for comments",
 			"begin": "(\\()|(\\;)",
 			"end": "(\\))|(\n)",
 			"patterns": [
