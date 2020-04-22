@@ -1,67 +1,373 @@
-
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "NC-Gcode",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [
-				{
-				"name": "constant.gcode",
-				"match": "[nN][ \\t]*[0-9\\.]+"
-				},
-				{
-					"name": "keyword.control.gcode.gcode",
-					"match": "[gG][ \\t]*[0-9][0-9\\.]*"
-				},
-				{
-					"name": "keyword.string.gcode",
-					"match": "(?i)[rRzZ][ \\t]*[\\-\\+]?[0-9\\.]+"
-				},
-				{
-					"name": "string.xcode.gcode",
-					"match": "(?i)[XAUI][ \\t]*[\\-\\+]?[0-9\\.]+"
-				},
-				{
-					"name": "comment.type.ycode.gcode",
-					"match": "(?i)[YBVJ][ \\t]*[\\-\\+]?[0-9\\.]+"
-				},
-				{
-					"name": "support.function.mcode.gcode",
-					"match": "[mM][ \\t]*[0-9][0-9\\.]*"
-				},
-				{
-					"name": "support.type.dDfFhHsStTcode.gcode",
-					"match": "[dDfFhHsStT][ \\t]*[0-9][0-9\\.]*"
-				},
-				{
-					"name": "variable.parameter.pqecode.gcode",
-					"match": "[pPqQeE][ \\t]*[0-9][0-9\\.]*"
-				},
-				{
-					"name": "string.control.mcode.gcode",
-					"match": "[cCwWkKlL][ \\t]*[\\-\\+]?[0-9\\.]+"
-				}
-		   ]
-		},
-		"strings": {
-			"name": "comment.gcode",
-			"begin": "(\\()|(\\;)",
-			"end": "(\\))|(\n)",
-			"patterns": [
-				{
-					"name": "constant.character.escape.gcode",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "source.gcode"
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "NC-Gcode",
+  "scopeName": "source.gcode",
+  "foldingStartMarker": "^O([A-Z0-9]{1,4})(?=\\s|$|\\()",
+  "foldingStopMarker": "^RTS$",
+  "patterns": [
+    {
+      "include": "#sub-programs"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#address-alphanumeric"
+    },
+    {
+      "include": "#address-integer"
+    },
+    {
+      "include": "#address-decimal"
+    },
+    {
+      "include": "#comments"
+    }
+  ],
+  "repository": {
+    "operators": {
+      "patterns": [
+        {
+          "name": "operator.goto",
+          "match": "^GOTO (N\\d{1,5}|N[A-Z][A-Z0-9]{0,4})$"
+        },
+        {
+          "name": "operator.if",
+          "match": "IF\\[.*\\](N\\d{1,5}|N[A-Z][A-Z0-9]{0,4})"
+        },
+        {
+          "name": "operator.comparison",
+          "match": " (LT|LE|EQ|NE|GE|GT) "
+        },
+        {
+          "name": "operator.logical",
+          "match": " (AND|OR|EOR|NOT) "
+        },
+        {
+          "name": "operator.arithmetic",
+          "match": "([\\+\\-\\*\\/])"
+        },
+        {
+          "name": "operator.other",
+          "match": "(SIN|COS|TAN|ATAN|ATAN2|SQRT|ABS|BIN|BCD|ROUND|FIX|DROUND|DFIX|DFUP|MOD)\\[(.*)\\]",
+          "captures": {
+            "2": {
+              "patterns": [
+                {
+                  "include": "#variables"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "sub-programs": {
+      "comment": "Keywords related to sub programs",
+      "patterns": [
+        {
+          "name": "keyword.subcall",
+          "match": "CALL O([A-Z0-9]{1,4}).*"
+        },
+        {
+          "name": "keyword.sub",
+          "match": "^O([A-Z0-9]{1,4})(?=\\s|$|\\()"
+        },
+        {
+          "name": "keyword.subend",
+          "match": "^RTS$"
+        }
+      ]
+    },
+    "variables": {
+      "comment": "Local, common, and system variables",
+      "patterns": [
+        {
+          "name": "var.local.okuma",
+          "match": "([ABCDEFGHIJKLMPQRSTUWXYZ][A-Z][A-Z0-9]{0,2})"
+        },
+        {
+          "name": "var.common.okuma",
+          "match": "VC(\\d{1,4}|\\[(\\d{1,4}|VC\\d{1,4}|[A-Z]{2}[A-Z0-9]{0,2})\\])"
+        },
+        {
+          "name": "var.system.okuma",
+          "match": "V[A-Z][A-Z0-9]{0,4}(\\[.*\\])?"
+        },
+        {
+          "name": "var.local.fanuc",
+          "match": "\\#([1-9]|[12][0-9]|3[0-3])(?!\\d)"
+        },
+        {
+          "name": "var.common.fanuc",
+          "match": "\\#([1-9][0-9]{2}})"
+        },
+        {
+          "name": "var.system.fanuc",
+          "match": "\\#([1-9][0-9]{3})(?!\\d)"
+        }
+      ]
+    },
+    "address-alphanumeric": {
+      "comment": "A single letter followed by one or more alphanumeric characters",
+      "patterns": [
+        {
+          "name": "word.d",
+          "match": "D([ABC]|\\d+)",
+          "captures": {
+            "0": {
+              "name": "support.type"
+            }
+          }
+        },
+        {
+          "name": "word.h",
+          "match": "H([ABC]|\\d+)",
+          "captures": {
+            "0": {
+              "name": "support.type"
+            }
+          }
+        },
+        {
+          "name": "word.n",
+          "match": "^(N)(\\d{1,5}|[A-Z][A-Z0-9]{0,4})(?=\\s|$|\\()"
+        }
+      ]
+    },
+    "address-integer": {
+      "comment": "A single letter followed by an unsigned integer or an expression",
+      "patterns": [
+        {
+          "name": "word.g",
+          "match": "G(\\d{1,3}|(?=\\=))",
+          "captures": {
+            "0": {
+              "name": "keyword.control"
+            }
+          }
+        },
+        {
+          "name": "word.m",
+          "match": "M(\\d{1,3}|(?=\\=))",
+          "captures": {
+            "0": {
+              "name": "support.function"
+            }
+          }
+        },
+        {
+          "name": "word.t",
+          "match": "T(\\d+|(?=\\=))",
+          "captures": {
+            "0": {
+              "name": "support.type"
+            }
+          }
+        }
+      ]
+    },
+    "address-decimal": {
+      "comment": "A single letter followed by a signed number, integer or decimal",
+      "patterns": [
+        {
+          "match": "([ABCEFIJKLPQRSUVWXYZ])([\\-\\+]?\\d+\\.?\\d*|\\.\\d+|(?=\\=))",
+          "captures": {
+            "0": {
+              "patterns": [
+                {
+                  "name": "word.a",
+                  "match": "A.*",
+                  "captures": {
+                    "0": {
+                      "name": "string"
+                    }
+                  }
+                },
+                {
+                  "name": "word.b",
+                  "match": "B.*",
+                  "captures": {
+                    "0": {
+                      "name": "comment"
+                    }
+                  }
+                },
+                {
+                  "name": "word.c",
+                  "match": "C.*",
+                  "captures": {
+                    "0": {
+                      "name": "string.control"
+                    }
+                  }
+                },
+                {
+                  "name": "word.e",
+                  "match": "E.*",
+                  "captures": {
+                    "0": {
+                      "name": "variable.parameter"
+                    }
+                  }
+                },
+                {
+                  "name": "word.f",
+                  "match": "F.*",
+                  "captures": {
+                    "0": {
+                      "name": "support.type"
+                    }
+                  }
+                },
+                {
+                  "name": "word.i",
+                  "match": "I.*",
+                  "captures": {
+                    "0": {
+                      "name": "string"
+                    }
+                  }
+                },
+                {
+                  "name": "word.j",
+                  "match": "J.*",
+                  "captures": {
+                    "0": {
+                      "name": "comment"
+                    }
+                  }
+                },
+                {
+                  "name": "word.k",
+                  "match": "K.*",
+                  "captures": {
+                    "0": {
+                      "name": "string.control"
+                    }
+                  }
+                },
+                {
+                  "name": "word.l",
+                  "match": "L.*",
+                  "captures": {
+                    "0": {
+                      "name": "string.control"
+                    }
+                  }
+                },
+                {
+                  "name": "word.p",
+                  "match": "P.*",
+                  "captures": {
+                    "0": {
+                      "name": "variable.parameter"
+                    }
+                  }
+                },
+                {
+                  "name": "word.q",
+                  "match": "Q.*",
+                  "captures": {
+                    "0": {
+                      "name": "variable.parameter"
+                    }
+                  }
+                },
+                {
+                  "name": "word.r",
+                  "match": "R.*",
+                  "captures": {
+                    "0": {
+                      "name": "keyword.string"
+                    }
+                  }
+                },
+                {
+                  "name": "word.s",
+                  "match": "S.*",
+                  "captures": {
+                    "0": {
+                      "name": "support.type"
+                    }
+                  }
+                },
+                {
+                  "name": "word.u",
+                  "match": "U.*",
+                  "captures": {
+                    "0": {
+                      "name": "string"
+                    }
+                  }
+                },
+                {
+                  "name": "word.v",
+                  "match": "V.*",
+                  "captures": {
+                    "0": {
+                      "name": "comment"
+                    }
+                  }
+                },
+                {
+                  "name": "word.w",
+                  "match": "W.*",
+                  "captures": {
+                    "0": {
+                      "name": "string.control"
+                    }
+                  }
+                },
+                {
+                  "name": "word.x",
+                  "match": "X.*",
+                  "captures": {
+                    "0": {
+                      "name": "string"
+                    }
+                  }
+                },
+                {
+                  "name": "word.y",
+                  "match": "Y.*",
+                  "captures": {
+                    "0": {
+                      "name": "comment"
+                    }
+                  }
+                },
+                {
+                  "name": "word.z",
+                  "match": "Z.*",
+                  "captures": {
+                    "0": {
+                      "name": "keyword.string"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.parens",
+          "begin": "\\(",
+          "end": "\\)"
+        },
+        {
+          "name": "comment.line.semi",
+          "begin": "\\;",
+          "end": "$"
+        }
+      ]
+    }
+  }
 }
