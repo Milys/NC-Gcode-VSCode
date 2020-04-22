@@ -79,6 +79,14 @@
                 "scopeName": "source.gcode",
                 "path": "./syntaxes/gcode.tmLanguage.json"
             }
+        ],
+        "themes": [
+            {
+                "label": "Dark (gcode)",
+                "id": "dark-gcode",
+                "uiTheme": "vs-dark",
+                "path": "./themes/dark-color-theme.json"
+            }
         ]
     }
 }

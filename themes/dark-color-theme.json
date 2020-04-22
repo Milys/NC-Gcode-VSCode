@@ -1,0 +1,57 @@
+{
+    "colors": {
+        "editor.foreground": "#D4D4D4"
+    },
+    "tokenColors": [
+        {
+            "scope": "var",
+            "settings": {
+                "foreground": "#a963d6",
+            }
+        },
+        {
+            "scope": [
+                "comment.line",
+                "word.n"
+            ],
+            "settings": {
+                "foreground": "#748294",
+            }
+        },
+        {
+            "scope": "word.m",
+            "settings": {
+                "foreground": "#ffff80",
+            }
+        },
+        {
+            "scope": [
+                "word.d",
+                "word.h",
+                "word.s",
+                "word.t"
+            ],
+            "settings": {
+                "foreground": "#4EC9B0",
+            }
+        },
+        {
+            "scope": "word.x",
+            "settings": {
+                "foreground": "#ff5555"
+            }
+        },
+        {
+            "scope": "word.y",
+            "settings": {
+                "foreground": "#00ff80"
+            }
+        },
+        {
+            "scope": "word.z",
+            "settings": {
+                "foreground": "#0080ff"
+            }
+        }
+    ]
+}
