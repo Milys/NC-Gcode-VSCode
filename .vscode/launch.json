@@ -10,7 +10,8 @@
             "args": [
                 "${workspaceRoot}/.vscode/sample.nc",
                 "--extensionDevelopmentPath=${workspaceRoot}"
-            ]
+            ],
+            "preLaunchTask": "build"
         }
     ]
 }

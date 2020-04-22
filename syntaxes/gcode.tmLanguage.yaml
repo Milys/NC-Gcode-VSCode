@@ -1,0 +1,96 @@
+$schema: 'https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json'
+name: NC-Gcode
+patterns:
+  - include: '#everything'
+repository:
+  everything:
+    patterns:
+      - include: '#keywords'
+      - include: '#comments'
+      - include: '#strings'
+      - include: '#default'
+  keywords:
+    patterns:
+      - name: constant.gcode
+        match: '[nN][ \t]*[0-9\.]+'
+      - name: keyword.control.gcode.gcode
+        match: '[gG][ \t]*[0-9][0-9\.]*'
+      - name: keyword.string.gcode
+        match: '(?i)[rRzZ][ \t]*[\-\+]?[0-9\.]+'
+      - name: string.xcode.gcode
+        match: '(?i)[XAUI][ \t]*[\-\+]?[0-9\.]+'
+      - name: comment.type.ycode.gcode
+        match: '(?i)[YBVJ][ \t]*[\-\+]?[0-9\.]+'
+      - name: support.function.mcode.gcode
+        match: '[mM][ \t]*[0-9][0-9\.]*'
+      - name: support.type.dDfFhHsStTcode.gcode
+        match: '[dDfFhHsStT][ \t]*[0-9][0-9\.]*'
+      - name: variable.parameter.pqecode.gcode
+        match: '[pPqQeE][ \t]*[0-9][0-9\.]*'
+      - name: string.control.mcode.gcode
+        match: '[cCwWkKlL][ \t]*[\-\+]?[0-9\.]+'
+  strings:
+    name: comment.gcode
+    begin: (\()|(\;)
+    end: |-
+      (\))|(
+      )
+    patterns:
+      - name: constant.character.escape.gcode
+        match: \\.
+  default:
+    patterns:
+      - name: constant.a.gcode
+        match: (?<=\s|^|\.|\d)A((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!A))
+      - name: constant.b.gcode
+        match: (?<=\s|^|\.|\d)B((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!B))
+      - name: constant.c.gcode
+        match: (?<=\s|^|\.|\d)C((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!C))
+      - name: constant.d.gcode
+        match: (?<=\s|^|\.|\d)D((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!D))
+      - name: constant.e.gcode
+        match: (?<=\s|^|\.|\d)E((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!E))
+      - name: constant.f.gcode
+        match: (?<=\s|^|\.|\d)F((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!F))
+      - name: constant.g.gcode
+        match: (?<=\s|^|\.|\d)G((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!G))
+      - name: constant.h.gcode
+        match: (?<=\s|^|\.|\d)H((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!H))
+      - name: constant.i.gcode
+        match: (?<=\s|^|\.|\d)I((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!I))
+      - name: constant.j.gcode
+        match: (?<=\s|^|\.|\d)J((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!J))
+      - name: constant.k.gcode
+        match: (?<=\s|^|\.|\d)K((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!K))
+      - name: constant.l.gcode
+        match: (?<=\s|^|\.|\d)L((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!L))
+      - name: constant.m.gcode
+        match: (?<=\s|^|\.|\d)M((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!M))
+      - name: constant.n.gcode
+        match: (?<=\s|^|\.|\d)N((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!N))
+      - name: constant.o.gcode
+        match: (?<=\s|^|\.|\d)O((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!O))
+      - name: constant.p.gcode
+        match: (?<=\s|^|\.|\d)P((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!P))
+      - name: constant.q.gcode
+        match: (?<=\s|^|\.|\d)Q((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!Q))
+      - name: constant.r.gcode
+        match: (?<=\s|^|\.|\d)R((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!R))
+      - name: constant.s.gcode
+        match: (?<=\s|^|\.|\d)S((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!S))
+      - name: constant.t.gcode
+        match: (?<=\s|^|\.|\d)T((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!T))
+      - name: constant.u.gcode
+        match: (?<=\s|^|\.|\d)U((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!U))
+      - name: constant.v.gcode
+        match: (?<=\s|^|\.|\d)V((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!V))
+      - name: constant.w.gcode
+        match: (?<=\s|^|\.|\d)W((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!W))
+      - name: constant.x.gcode
+        match: (?<=\s|^|\.|\d)X((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!X))
+      - name: constant.y.gcode
+        match: (?<=\s|^|\.|\d)Y((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!Y))
+      - name: constant.z.gcode
+        match: (?<=\s|^|\.|\d)Z((?==)|(\-?(\d+\.?\d*|\.\d+)))((?=\s|[A-Z]|=)(?!Z))
+scopeName: source.gcode
+

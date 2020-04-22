@@ -88,5 +88,11 @@
                 "path": "./themes/dark-color-theme.json"
             }
         ]
+    },
+    "devDependencies": {
+        "js-yaml": "^3.13.1"
+    },
+    "scripts": {
+        "build": "js-yaml ./syntaxes/gcode.tmLanguage.yaml > ./syntaxes/gcode.tmLanguage.json"
     }
 }
