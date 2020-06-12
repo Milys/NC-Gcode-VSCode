@@ -1,23 +1,30 @@
 {
     "name": "nc-gcode",
-    "displayName": "nc-gcode",
-    "description": "Gcode syntax highlighter",
     "version": "0.7.0",
-    "publisher": "ML",
+    "displayName": "nc-gcode",
+    "description": "G-code syntax highlighter",
+    "publisher": "smw",
+    "author": {
+        "name": "Scott Wyant",
+        "email": "scottmwyant@gmail.com",
+        "url": "https://scottmwyant.com"
+    },
+    "preview": true,
     "engines": {
         "vscode": "^1.19.0"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Milys/NC-Gcode-VSCode.git"
+        "url": "https://github.com/scottmwyant/NC-Gcode-VSCode.git"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "icon": "icon.png",
+    "keywords": ["cnc", "g-code", "gcode", "nc"],
     "galleryBanner": {
-        "color": "#C80000",
-        "theme": "dark"
+        "color": "#E4F2FF",
+        "theme": "light"
     },
     "contributes": {
         "languages": [{
