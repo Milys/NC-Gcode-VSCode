@@ -9,6 +9,9 @@
         "email": "scottmwyant@gmail.com",
         "url": "https://scottmwyant.com"
     },
+    "scripts": {
+        "pack": "vsce package"
+    },
     "preview": true,
     "engines": {
         "vscode": "^1.19.0"
