@@ -14,7 +14,7 @@
     "categories": [
         "Languages"
     ],
-    "icon": "images/G.png",
+    "icon": "icon.png",
     "galleryBanner": {
         "color": "#C80000",
         "theme": "dark"
@@ -73,7 +73,7 @@
         "grammars": [{
             "language": "gcode",
             "scopeName": "source.gcode",
-            "path": "./syntaxes/gcode.tmLanguage.json"
+            "path": "./gcode.tmLanguage.json"
         }]
     }
 }
