@@ -2,7 +2,7 @@
     "name": "nc-gcode",
     "displayName": "nc-gcode",
     "description": "G-code syntax highlighter",
-    "version": "0.14.0",
+    "version": "0.14.1",
     "publisher": "ML2",
     "author": {
         "name": "Milys",

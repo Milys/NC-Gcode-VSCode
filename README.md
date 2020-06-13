@@ -1,9 +1,6 @@
 # nc-gcode
 
-Please read:
-
-> - - -
-> June 11, 2020
+> June 12, 2020
 >
 > The original extension, [ML.nc-gcode](https://marketplace.visualstudio.com/items?itemName=ML.nc-gcode), is owned and published by [Milys](https://github.com/Milys).  I have had limited communication with the owner and he agreed to add me as a collaborator.  Despite my request, I have not been granted sufficient access to his publisher to get an updated verison of his extension to the marketplace.
 >
@@ -13,7 +10,6 @@ Please read:
 >  
 > -- scottmwyant
 > 
-> - - -
 
 
 G-code is Numerical Control (NC) programming language. It is used in Computer Aided Manufacturing (CAM) to control automated machines.  G-code language tells a machine's controller which tool to use, where to move, how fast to move, and what path to follow. G-Code is also use in 3D printing.
@@ -26,4 +22,4 @@ This VSCode Extension is syntax highlighter for NC G-Code.
 
 ## Release Notes
 
-Please refer to the [ChangeLog](changelog.md).
+Please refer to the [CHANGELOG](CHANGELOG.md).
