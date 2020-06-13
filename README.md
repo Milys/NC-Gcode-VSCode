@@ -1,48 +1,29 @@
-# nc-gcode README
+# nc-gcode
 
-G-code is Numerical Control (NC) programming language. It is used in Computer Aided Manufacturing (CAM) to control automated machine.
+Please read:
 
-G-code language tells a machine controller which tool to use, where to move, how fast to move, and what path to follow.
+> - - -
+> June 11, 2020
+>
+> The original extension, [ML.nc-gcode](https://marketplace.visualstudio.com/items?itemName=ML.nc-gcode), is owned and published by [Milys](https://github.com/Milys).  I have had limited communication with the owner and he agreed to add me as a collaborator.  Despite my request, I have not been granted sufficient access to his publisher to get an updated verison of his extension to the marketplace.
+>
+> My approach to this situation is to create a new extension using a similar publisher id and the same name, `ML2.nc-gcode`.  This new extension will be flagged as a 'preview'.  I'll continue to publish from the `master` branch.
+>
+> Note that the version in the marketplace is `0.13.0` and the version in the owner's repository is `0.7.0`.  I will be publishing `0.14.0` developing off of `0.7.0`.
+>  
+> -- scottmwyant
+> 
+> - - -
 
-G-Code is also use in 3D printing.
+
+G-code is Numerical Control (NC) programming language. It is used in Computer Aided Manufacturing (CAM) to control automated machines.  G-code language tells a machine's controller which tool to use, where to move, how fast to move, and what path to follow. G-Code is also use in 3D printing.
 
 ## Features
 
 This VSCode Extension is syntax highlighter for NC G-Code.
 
-<img width="825" alt="screen_shot" src="https://user-images.githubusercontent.com/11251737/35370982-1e0a4e62-0146-11e8-8534-545ad78ae7b5.png">
-
-## Requirements
-
-No requirements or dependencies.
-
-## Extension Settings
-
-
-## Known Issues
-
-
+<img alt="screen_shot" src="https://user-images.githubusercontent.com/29161635/84556042-3800ec80-acee-11ea-8f22-5f8603142ff0.PNG">
 
 ## Release Notes
 
-
-
-### 1.0.0
-
-1. Initial release
-2. Updated to include ";" gcode comment style.
-3. Add link to GitHub Repository in VSCode extension.
-
-
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** Here are some useful editor keyboard shortcuts:
-
-* Find in code (`Cmd+F` on OSX or `Ctrl+F` on Windows)
-* Find Line number to navigate VSCode (`Ctrl+G` on OSX and Windows)
-
-
-**Enjoy!**
+Please refer to the [ChangeLog](changelog.md).
