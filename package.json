@@ -2,7 +2,7 @@
     "name": "nc-gcode",
     "displayName": "nc-gcode",
     "description": "G-code syntax highlighter",
-    "version": "0.14.1",
+    "version": "0.14.2",
     "publisher": "ML2",
     "author": {
         "name": "Milys",
@@ -11,11 +11,18 @@
     "maintainers": [{
         "name": "scottmwyant",
         "url": "https://github.com/scottmwyant"
+    },
+    {
+        "name": "Stevil Knevil",
+        "url": "https://github.com/StevilKnevil"
     }],
     "scripts": {
         "pack": "vsce package"
     },
     "preview": true,
+    "activationEvents": [
+        "onLanguage:gcode"
+     ],    
     "engines": {
         "vscode": "^1.19.0"
     },
@@ -32,7 +39,11 @@
         "color": "#E4F2FF",
         "theme": "light"
     },
+    "main": "./client/extension.js",
     "contributes": {
+        "capabilities": {
+            "hoverProvider": "true"
+        },
         "languages": [{
             "id": "gcode",
             "aliases": [
@@ -88,5 +99,7 @@
             "scopeName": "source.gcode",
             "path": "./gcode.tmLanguage.json"
         }]
-    }
+    },
+    "dependencies" :
+        { "node-fetch" : ">2.6.0" }
 }
