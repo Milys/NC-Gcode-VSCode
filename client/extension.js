@@ -29,20 +29,8 @@ function activate(context) {
             if(!isNaN(matches[2]))
             {
                 // Format the string correctly (i.e. with leading zeros)
-                const lookup = matches[1] + matches[2].padStart(3,"0");
-                const rawInfoUrl = urlLookup[lookup].download_url;
-                if (rawInfoUrl != null)
-                {
-                    try {
-                        const response = await fetch(rawInfoUrl);
-                        const json = await response.text();
-                        const docs = parseDocs(json);
-                        const hoverText = `**${docs.title}** \n\n ${docs.brief} \n\n <${urlLookup[lookup].docs_url}>`
-                        return new vscode.Hover(hoverText);
-                    } catch (error) {
-                        console.log(error);
-                    }
-                }
+                const gcode = matches[1] + matches[2].padStart(3,"0");
+                return new vscode.Hover(await getHoverText(gcode));
             }
         }
     });    
@@ -51,6 +39,31 @@ function activate(context) {
 }
 
 function deactivate() { }
+
+async function getHoverText(gcode)
+{
+    if (urlLookup[gcode].hoverText == null)
+    {
+        // Can we generate the info?
+        if (urlLookup[gcode].download_url != null)
+        {
+            const rawInfoUrl = urlLookup[gcode].download_url;
+            if (rawInfoUrl != null)
+            {
+                try {
+                    const response = await fetch(rawInfoUrl);
+                    const json = await response.text();
+                    const docs = parseDocs(json);
+                    urlLookup[gcode].hoverText = `**${docs.title}** \n\n ${docs.brief} \n\n <${urlLookup[gcode].docs_url}>`
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    
+    }
+    return urlLookup[gcode].hoverText;
+}
 
 function parseRepoContents(json)
 {
