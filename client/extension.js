@@ -1,19 +1,21 @@
 const vscode = require('vscode');
 var fetch = require("node-fetch");
 
-let urlLookup = new Object();
+var urlLookup;
 
 function activate(context) {
 
-    console.log('Congratulations, your extension "star-rod" is now active!');
-    // https://www.chrishasz.com/blog/2020/07/28/vscode-how-to-use-local-storage-api/#:~:text=the%20Memento%20class%20in%20the,tune%20how%20you%20store%20data.
-    //const storage = context.globalState
+    console.log('GCode hover text is active');
 
-
-    fetch(`https://api.github.com/repos/MarlinFirmware/MarlinDocumentation/contents/_gcode`)
+    if (urlLookup == null)
+    {
+        console.debug('Fetching cache of documentation');
+        urlLookup = new Object();
+        fetch(`https://api.github.com/repos/MarlinFirmware/MarlinDocumentation/contents/_gcode`)
         .then(res => res.json())
         .then(body => parseRepoContents(body))
         .catch((error) => console.log(error));
+    }
 
     disposable = vscode.languages.registerHoverProvider('gcode', {
         async provideHover(document, position, token) {
