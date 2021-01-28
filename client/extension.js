@@ -30,39 +30,20 @@ function activate(context) {
             {
                 // Format the string correctly (i.e. with leading zeros)
                 const lookup = matches[1] + matches[2].padStart(3,"0");
-                if (urlLookup[lookup] != null)
+                const rawInfoUrl = urlLookup[lookup].download_url;
+                if (rawInfoUrl != null)
                 {
-                    // Can get the contents of the repo here. Need to parse out the hypenated entries (like G000-G001) to make a lookup
-                    //https://api.github.com/repos/MarlinFirmware/MarlinDocumentation/contents/_gcode
-                    const url = urlLookup[lookup];
-                    /*
-                    const prommise = fetch(url)
-                        .then(res => res.text())
-                        .then(body => {
-                            const hoverText = parseDocs(body)
-                            return new vscode.Hover({value: "hoverText"});
-                        })
-                        .catch((error) => console.log(error));
-    
-                    await promise;
-                    */
-
                     try {
-                        const response = await fetch(url);
+                        const response = await fetch(rawInfoUrl);
                         const json = await response.text();
-                        const hoverText = parseDocs(json);
+                        const docs = parseDocs(json);
+                        const hoverText = `**${docs.title}** \n\n ${docs.brief} \n\n <${urlLookup[lookup].docs_url}>`
                         return new vscode.Hover(hoverText);
                     } catch (error) {
                         console.log(error);
                     }
-
-               await promise;
-
-                    return promise;
                 }
             }
-
-            return;
         }
     });    
 
@@ -75,19 +56,29 @@ function parseRepoContents(json)
 {
     json.forEach(element => {
         const filename = element.name.split(".")[0];
-        const numberParts = filename.split("-");
-        numberParts.forEach(numberPart => {
-            urlLookup[numberPart] = element.download_url;
-        });
+        const download_url = element.download_url;
+        const docs_url = `https://marlinfw.org/docs/gcode/${filename}.html`;
+
+        const regex = /([A-Za-z])(\d+)(?:-([A-Za-z])(\d+))?/;
+        const matches = filename.match(regex);
+
+        // remove the global match
+        matches.shift();
+
+        for (i = 0; i <= matches.length/2; i+=2) {
+            urlLookup[matches[i] + matches[i+1]] = {
+                download_url: download_url,
+                docs_url: docs_url,
+            };
+        }
     });
 }
 
 function parseDocs(text) 
 {
-    const title = text.match(/title: ([^\n]*)/)[1];
-    const brief = text.match(/brief: ([^\n]*)/)[1];
-    return new vscode.MarkdownString(`**${title}** \n\n ${brief}`);
-
+    return {
+        title:text.match(/title: ([^\n]*)/)[1],
+        brief:text.match(/brief: ([^\n]*)/)[1]};
 }
 
 module.exports = {
