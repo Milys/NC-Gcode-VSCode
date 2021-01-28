@@ -25,8 +25,10 @@ function activate(context) {
             // format the word correctly
             const regex = /\s*([A-Za-z])(\d+)\s*/
             const matches = word.match(regex);
+            // If the second part is a number then search the lookup for the documentation
             if(!isNaN(matches[2]))
             {
+                // Format the string correctly (i.e. with leading zeros)
                 const lookup = matches[1] + matches[2].padStart(3,"0");
                 if (urlLookup[lookup] != null)
                 {
