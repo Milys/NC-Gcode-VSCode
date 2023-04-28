@@ -34,6 +34,10 @@
 					"match": "(?i)[YBVJ][ \\t]*[\\-\\+]?[0-9\\.]+"
 				},
 				{
+					"name": "comment.line.gcode",
+					"match": ";.*"
+				},
+				{
 					"name": "support.function.mcode.gcode",
 					"match": "[mM][ \\t]*[0-9][0-9\\.]*"
 				},
